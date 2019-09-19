@@ -1,0 +1,89 @@
+<apex:page standardStylesheets="true" title="Railway Consumer Service System" standardController="Fare_Price__c" extensions="AutoPopulateExample" sidebar="false" showHeader="false">
+    
+    <apex:form >
+                    <h1>
+                    <center>Railway Consumer Service System</center>   
+                    </h1>
+        <apex:pageBlock >
+      
+            <apex:pageBlockSection columns="2">
+                      <apex:pageMessages ></apex:pageMessages>
+                <apex:outputLabel >
+                   
+                    
+                    <style >
+                        body{
+                        background-image: url("{!$Resource.logo}")
+                         }
+                        p
+                        {
+                        
+                        font-family:"Arial Unicode MS";
+                        font-size:30pt;
+                        }
+                        
+                        h1
+                        {
+  							color: black;
+  							text-align: center;
+                        font-family:"Times New Roman";
+                        font-size:30pt;
+                        }
+                        .aa{
+                        sstext-align:center;
+                        float:right;
+                        padding-left:80px;
+                        }
+                    </style>
+                    
+                </apex:outputLabel>
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:form > 
+        
+        <apex:pageBlock >            
+            <apex:pageBlockSection title="Search Your trains" columns="1" collapsible="false">
+                <apex:inputField value="{!Testing.From__c}"/>
+                <apex:inputField value="{!Testing.To__c}"/>
+                <apex:inputField value="{!Testing.Class__c}"/>
+                <apex:inputField value="{!Testing.Date__c}"/>
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="No of Passengers"/> 
+                    <apex:inputText value="{!noOfPassengers}" maxlength="1"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>	
+            <apex:pageBlockButtons location="bottom">
+                <apex:commandButton value="Go" action="{!display}">
+                      
+                </apex:commandButton>
+                
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockSection > 
+                
+                <apex:pageBlockSectionItem >  
+                    <apex:outputText value="Total Fare Amount"/> 
+                    <apex:outputText value="{!TotalFair}"> </apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>   
+        </apex:pageBlock>
+        
+        <apex:pageblock >
+            <apex:pageBlockTable value="{!updatedFairPrice}" var="a" >
+                <apex:column value="{!a.Train__c}"/>
+                <apex:column value="{!a.From__c}"/>
+                <apex:column value="{!a.To__c}"/>
+                <apex:column >
+                    <apex:commandButton value="Book" action="{!book}">
+                 
+                    </apex:commandButton>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageblock>
+        
+        
+    </apex:form>
+    
+</apex:page>
